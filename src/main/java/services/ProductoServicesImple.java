@@ -13,13 +13,8 @@ public class ProductoServicesImple implements ProductoService {
     private ProductoRepository productoRepository;
 
     @Autowired
-    public ProductoServicesImple(ProductoRepository productoRepository) {
+    public ProductoServicesImple (ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
-    }
-
-    @Override
-    public List<Producto> findAll() {
-        return productoRepository.findAll();
     }
 
     @Override
@@ -28,13 +23,23 @@ public class ProductoServicesImple implements ProductoService {
     }
 
     @Override
+    public List<Producto> findAll() {
+        return productoRepository.findAll();
+    }
+
+    @Override
     public Producto findById(Long id) {
-        return productoRepository.findById(id).orElse(null);
+        return productoRepository.findById(id).orElseGet(null);
     }
 
     @Override
     public void deleteById(Long id) {
         productoRepository.deleteById(id);
+    }
+
+    @Override
+    public Producto updateById(Producto producto) {
+        return productoRepository.save(producto);
     }
 
 }

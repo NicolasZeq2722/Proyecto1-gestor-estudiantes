@@ -1,4 +1,4 @@
-package com.gestor_estudiantes.gestorestudiantes;
+package com.gestor_estudiantes.gestorestudiantes.gestorestudiantes;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

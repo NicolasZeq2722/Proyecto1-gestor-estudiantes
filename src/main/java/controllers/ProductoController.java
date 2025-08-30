@@ -10,31 +10,38 @@ import java.util.List;
 
 @RestController
 public class ProductoController {
-    @Autowired
-    private ProductoService productoService;
 
-    @Autowired
-    public ProductoController(ProductoService productoService) {
+    public ProductoService productoService;
+
+
+    public ProductoController (ProductoService productoService) {
         this.productoService = productoService;
     }
 
-    @PostMapping("/Productos")
-    public Producto addProducto(@RequestBody Producto producto) {
+
+    @PostMapping("/producto")
+    public Producto crearProducto(@RequestBody Producto producto) {
         return productoService.save(producto);
     }
 
-    @GetMapping("/Productos")
-    public List<Producto> findAll(){
+    @GetMapping("/producto")
+    public List<Producto> findAll() {
         return productoService.findAll();
     }
 
-    @GetMapping("/Producto/{id}")
+    @GetMapping("/producto/{id}")
     public Producto findById(@PathVariable Long id) {
         return productoService.findById(id);
     }
 
-    @DeleteMapping("/Producto/{id}")
-    public void deleteById(@PathVariable Long id) {
-        productoService.deleteById(id);
+    @PutMapping("/producto/{id}")
+    public Producto updateById(@RequestBody Producto producto) {
+        return productoService.updateById(id, producto);
     }
+
+    @DeleteMapping("/producto/{id}")
+    public void deleteById(@PathVariable Long id) {
+         productoService.deleteById(id);
+    }
+
 }
