@@ -12,7 +12,7 @@ public class ProductoServicesImple implements ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
-    @Autowired
+
     public ProductoServicesImple (ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
