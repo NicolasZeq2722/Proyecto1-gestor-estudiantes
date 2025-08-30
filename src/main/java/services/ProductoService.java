@@ -11,6 +11,5 @@ public interface ProductoService {
     public List<Producto> findAll();
     public Producto findById(Long id);
     public void deleteById(Long id);
-
-
+    public Producto updateById(Producto producto);
 }
