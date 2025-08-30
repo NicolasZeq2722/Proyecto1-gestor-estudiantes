@@ -1,14 +1,16 @@
 package controllers;
 
-import models.Producto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import repositories.ProductoRepository;
-import services.ProductoService;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.*;
+
+import models.Producto;
+import services.ProductoService;
+
+
 @RestController
+@RequestMapping("/productos")
 public class ProductoController {
 
     public ProductoService productoService;
@@ -19,29 +21,32 @@ public class ProductoController {
     }
 
 
-    @PostMapping("/producto")
-    public Producto crearProducto(@RequestBody Producto producto) {
+    @PostMapping("/productos")
+    public Producto save(@RequestBody Producto producto) {
         return productoService.save(producto);
     }
 
-    @GetMapping("/producto")
+
+    @GetMapping("/productos")
     public List<Producto> findAll() {
         return productoService.findAll();
     }
 
-    @GetMapping("/producto/{id}")
-    public Producto findById(@PathVariable Long id) {
+
+    @GetMapping("/productos/{id}")
+    public Producto findById(@PathVariable Long id){
         return productoService.findById(id);
     }
 
-    @PutMapping("/producto/{id}")
+
+    @PutMapping("/productos")
     public Producto updateById(@RequestBody Producto producto) {
-        return productoService.updateById(id, producto);
+        return productoService.updateById(producto);
     }
 
-    @DeleteMapping("/producto/{id}")
+    @DeleteMapping("/productos/{id}")
     public void deleteById(@PathVariable Long id) {
-         productoService.deleteById(id);
+        productoService.deleteById(id);
     }
 
 }
